@@ -41,14 +41,14 @@ def match(comp_num, your_num):
     return correct, so_so
 
 
-def convert_string_to_a_list_of_strings(Str):
+def convert_string_to_a_list_of_strings(string_num):
     list1 = []
-    list1[:0] = Str
+    list1[:0] = string_num
     return list1
 
 
-def findDup(Str):
-    convert = convert_string_to_a_list_of_strings(Str)
+def findDup(string_num):
+    convert = convert_string_to_a_list_of_strings(string_num)
     List_of_ints = [int(item) for item in convert]
     List_of_ints.sort()
     Duplicates_list = []
@@ -58,18 +58,18 @@ def findDup(Str):
     return Duplicates_list
 
 
-def not_accepted_digits(Str, digit_list):
+def not_accepted_digits(string_num, digit_list):
     string_list = [str(item) for item in digit_list]
     Not_accepted_digits = []
-    for i in range(len(Str)):
-        if Str[i] not in string_list and Str[i] not in Not_accepted_digits:
+    for i in range(len(string_num)):
+        if string_num[i] not in string_list and string_num[i] not in Not_accepted_digits:
             Not_accepted_digits.append(Str[i])
     return Not_accepted_digits
 
 
-def detect_letters_in_str(Str):
+def detect_letters_in_str(string_num):
     count = 0
-    for s in Str:
+    for s in string_num:
         if (s.isalpha()) == True:
             count += 1
     return count
@@ -91,7 +91,6 @@ else:
             print("Sorry, we don't play with letters")
             your_num = input('Enter your next choice of numbers: ')
         elif detect_letters == 0:
-            computer_test = match(comp_num, your_num)
             Not_accepted_digits = not_accepted_digits(your_num, list(range(digits)))
             find_dup = findDup(your_num)
             if len(Not_accepted_digits) == 1:
@@ -104,6 +103,7 @@ else:
                 print('No duplication, as indicated above')
                 your_num = input('Enter your next choice of numbers: ')
             elif len(your_num) == len(comp_num):
+                computer_test = match(comp_num, your_num)
                 print('correct: ', computer_test[0], 'so so: ', computer_test[1])
                 your_num = input('Enter your next choice of numbers: ')
     if your_num == comp_num:
